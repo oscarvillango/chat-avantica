@@ -1,0 +1,56 @@
+<!doctype html>
+  <html>
+    <head>
+      <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+      <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+      <link rel="stylesheet" type="text/css" href="css/example.css">
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    </head>
+    <body>
+
+<!-- CHAT MARKUP -->
+    <div class="avantica-chat">
+        <header class="avChatHeader">
+          <h3>Contact Us!</h3>
+        </header>
+        <div class="avChatBody login">
+          <div class="setSession row">
+            <p class="center"><img src="images/avantica-logo.png" /></p>
+            <div class="input-field col s12">
+              <label for="sessionName">Name: </label>
+              <input type="text" name="sessionName" id="sessionName" />
+            </div>
+            <div class="input-field col s12">
+              <label for="sessionEmail">Email:</label>
+              <input type="email" name="sessionEmail" id="sessionEmail" />
+            </div>
+            <div class="input-field col s12 center">
+              <button id="btnSession" class=" waves-effect waves-light btn">Create Chat</button>
+            </div>
+          </div>
+          <div class="chatLive">
+            <div class="chatData">
+              <b id="greetings" class="chatDataText"></b>
+              <span id="status" class="chatDataText right"></span>
+            </div>
+            <div class="chatMessages">
+              
+            </div>
+            <div class="chatText row">
+              <div class="input-field col s12">
+                <textarea class="materialize-textarea messageUser" name="chatMessage" id="chatMessage" placeholder="Type the message"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="avChatfooter">
+          
+        </footer>
+    </div>
+
+<!-- CHAT JAVACRIPT -->
+    <script src="js/app.js"></script>
+    </body>
+  </html>
