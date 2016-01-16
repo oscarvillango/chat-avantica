@@ -14,7 +14,7 @@ angular.module("chatAvanticaAdmin")
 			}).then(function(authData) {
 
 				var cookieEncode = b.encode(userEmail +"-"+ userPass +"-"+ authData.uid);
-				r.session = JSON.stringify({"userInfo" : { "user": userEmail, "keyValue": cookieEncode }});
+				r.session = cookieEncode;
 
 				h.defaults.headers.common['Authorization'] = 'Basic ' + cookieEncode;
 				c.put("currentSession", r.session);

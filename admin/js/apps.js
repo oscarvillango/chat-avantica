@@ -14,21 +14,16 @@ angular.module("chatAvanticaAdmin", ["firebase", "ngRoute", "ngCookies", "base64
 	})
 	.run(function($rootScope, $cookies, $location, $http){
 
-		$rootScope.session = $cookies.get('currentSession') || {};
+		$rootScope.session = $cookies.get("currentSession") || false;
 
-		console.log($rootScope.session);
-		var sessionData = $rootScope.session;
-
-		if (sessionData.userInfo) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + sessionData.userInfo.keyValue;
+		if ($rootScope.session) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.session;
         }
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             
             var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
-            var loggedIn = sessionData.userInfo.user;
-
-            console.log(loggedIn);
+            var loggedIn = $rootScope.session;
 
             if (restrictedPage && !loggedIn) {
                 $location.path('/login');
