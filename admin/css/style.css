@@ -33,3 +33,31 @@ body{
 .chatLogin h1{
 	font-size: 3rem;
 }
+
+.mainHeader{
+	position: relative;
+}
+
+.mainHeader .mainLogo{
+	margin: 10px 0px;
+}
+
+.mainHeader nav{
+	background-color: #2F2D46 !important;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.chatPanel{
+	background-color: #FFFFFF;
+	padding: 0 15px 10px;
+}
+
+.chatPanel h1{
+	display: inline-block;
+	font-size: 3.2rem;
+}
+
+.chatPanel h3{
+	display: inline-block;
+	font-size: 2rem;
+}

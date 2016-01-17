@@ -15,6 +15,6 @@ angular.module("chatAvanticaAdmin")
 		}
 
 	}])
-	.controller("chatDashboard", ["$scope", function(s){
-
+	.controller("chatDashboard", ["$scope", "userServices", "fireServices", function(s, u, f){
+		f.getCurrentChats();
 	}])

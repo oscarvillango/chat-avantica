@@ -31,9 +31,35 @@ angular.module("chatAvanticaAdmin")
 
 		}
 
+		this.getUserInfo = function(){
+			var currentSession = b.decode(r.session);
+			
+			var arrayData = currentSession.split("-");
+
+			return arrayData[0];
+
+		}
+
 		this.clearSession = function(){
 			c.remove("currentSession");
-			r.session
+			r.session = "";
+		}
+
+	}])
+	.service("fireServices", ["$firebaseObject", function(f){
+
+		this.getCurrentChats = function(){
+			
+			var loadedChats = new Firebase("https://avantica-chat-test.firebaseio.com/chats");
+			var dataChats = f(loadedChats);
+
+			console.log(dataChats);
+
+			var chat;
+			for(chat in dataChats){
+				console.log(chat);
+			}
+
 		}
 
 	}]);
