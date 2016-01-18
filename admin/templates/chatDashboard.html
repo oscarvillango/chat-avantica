@@ -2,9 +2,7 @@
 	<img src="images/avantica-logo.png" class="mainLogo" />
 	<nav>
 		<ul id="nav-mobile" class="left hide-on-med-and-down">
-			<li><a href="sass.html">Sass</a></li>
-			<li><a href="badges.html">Components</a></li>
-			<li><a href="collapsible.html">JavaScript</a></li>
+			<li>Welcome!!!</li>
 		</ul>
 		<a href="#/" class="brand-logo right">Log out</a>
 	</nav>
@@ -15,14 +13,29 @@
 	<article class="row">
 		<div class="col s6 m4 l3">
 			<h3>Current chats</h3>
-			<div class="chatLists">
-				
+			<div class="chatLists" ng-repeat="chat in currentChats" ng-click="seeChat(chat);">
+				<label>{{chat.username}}</label>
 			</div>
 		</div>
 		<div class="col s6 m8 l9">
-			<h3>here goes the chat panel</h3>
 			<div class="viewChat">
-				
+				<div class="chatPanel" ng-repeat="chat in currentChats" ng-show="chat.chat == currentChat">
+					<h3 class="panelTitle">{{ "Chat with: " + chat.username}}</h3>
+					<div class="chatMessages">
+						<ul>
+							<li ng-repeat="message in chat.messages">
+								<strong class="example-chat-username">{{message.name}}: </strong>
+								{{message.text}}
+							</li>
+						</ul>
+					</div>
+					<footer>
+						<form ng-submit="addMessage();">
+							<input type="hidden" ng-model="newMessage.chatID" />
+							<input type="text" ng-model="newMessage.message" placeholder="Type a message..." required/>
+						</form>
+					</footer>
+				</div>
 			</div>
 		</div>
 	</article>

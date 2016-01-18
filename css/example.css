@@ -60,6 +60,7 @@
   height: 215px;
   overflow-y: auto;
   padding: 5px 10px;
+  width: 100%;
 }
 
 .chatMessages strong{

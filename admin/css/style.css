@@ -61,3 +61,24 @@ body{
 	display: inline-block;
 	font-size: 2rem;
 }
+
+.chatLists{
+	background-color: #F1E76E;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+.chatLists:hover{
+	background-color: #89CA8E;
+}
+
+.chatMessages{
+	border: #2F2D46 solid 1px;
+	border-radius: 10px;
+	height: 300px;
+	overflow-y: auto;
+	padding: 10px;
+	width: 100%;
+}
