@@ -87,7 +87,20 @@ angular.module("chatAvanticaAdmin")
 							dataUserChat.$loaded()
 								.then(function(userData){
 									var infoChat = {chat: chatID, username: userData.name, useremail:userData.email, messages: []}
-									r.currentChats.push(infoChat);
+									
+									var chatPreviuosMessages = f(chatsMessages);
+
+									chatPreviuosMessages.$loaded()
+										.then(function(data){
+											for(var i = 0; i < data.length; i++){
+												if(chatID == data[i].chatSession){
+													infoChat.messages.push({name: data[i].name, text: data[i].text});
+												}
+											}
+
+											r.currentChats.push(infoChat);
+										});
+
 								})
 								.catch(function(error) {
 									console.error("Error:", error);
