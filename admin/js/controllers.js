@@ -15,10 +15,12 @@ angular.module("chatAvanticaAdmin")
 		}
 
 	}])
-	.controller("chatDashboard", ["$scope", "userServices", "fireServices", function(s, u, f){
+	.controller("chatDashboard", ["$scope", "userServices", "fireServices", "$location", function(s, u, f, l){
 		s.newMessage = {};
 
 		f.getCurrentChats();
+
+		s.username = u.getUserInfo();
 
 		s.seeChat = function(currentChat){
 			s.currentChat = currentChat.chat;
@@ -37,6 +39,11 @@ angular.module("chatAvanticaAdmin")
 			f.sendMessage(messageObject);
 			
 			s.newMessage = {chatID : s.newMessage.chatID, message: ""};
+		}
+
+		s.logoutSession = function(){
+			u.clearSession();
+			l.path("/login");
 		}
 
 	}])

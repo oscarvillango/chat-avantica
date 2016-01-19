@@ -106,19 +106,13 @@ jQuery(document).ready(function(){
 	function setClock(){
 		var today = new Date();
 
-		var d = today.getDate();
-		var mt = today.getMonth() + 1;
-		var y = today.getFullYear();
-
 		var h = today.getHours();
 		var m = today.getMinutes();
 		var s = today.getSeconds();
 
 		m = checkTime(m);
 		s = checkTime(s);
-		document.getElementById('status').innerHTML =
-			mt + "-" + d + "-" + y + " " +
-			h + ":" + m + ":" + s;
+		document.getElementById('status').innerHTML = h + ":" + m + ":" + s;
 
 		var t = setTimeout(setClock, 500);
 	}
