@@ -58,6 +58,7 @@ body{
 
 .chatPanel{
 	background-color: #FFFFFF;
+	min-height: 500px;
 	padding: 0 15px 10px;
 }
 

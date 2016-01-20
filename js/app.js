@@ -4,8 +4,13 @@ jQuery(document).ready(function(){
 	var chatMessages = new Firebase('https://avantica-chat-test.firebaseio.com/mensages');
 
 	var btnSession = jQuery("#btnSession");
+	var startChat = jQuery("#startChat");
 
-	btnSession.on("click", createSession);
+
+	startChat.submit(function(e){
+		e.preventDefault();
+		createSession();
+	});
 
 	function createSession(){
 		var nameSession = jQuery("#sessionName");
