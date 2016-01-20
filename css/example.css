@@ -68,7 +68,7 @@
 }
 
 .chatMessages .message{
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .chatText{
@@ -81,6 +81,20 @@
 
 .chatText.row{
   margin-bottom: 0px;
+}
+
+.messageText{
+  border-radius: 5px;
+  display: inline-block;
+  padding: 4px 10px;
+}
+
+.adminMessage .messageText{
+  background-color: rgba(0,172,208, 0.5);
+}
+
+.userMessage .messageText{
+  background-color: rgba(137,202,142, 0.7);
 }
 
 textarea.messageUser{

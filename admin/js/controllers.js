@@ -33,7 +33,8 @@ angular.module("chatAvanticaAdmin")
 			var messageObject = {
 				name: userLogged,
 				text: s.newMessage.message,
-				chatSession: s.newMessage.chatID
+				chatSession: s.newMessage.chatID,
+				sendFrom: "admin"
 			};
 
 			f.sendMessage(messageObject);

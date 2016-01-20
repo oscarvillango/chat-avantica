@@ -6,7 +6,6 @@ jQuery(document).ready(function(){
 	var btnSession = jQuery("#btnSession");
 	var startChat = jQuery("#startChat");
 
-
 	startChat.submit(function(e){
 		e.preventDefault();
 		createSession();
@@ -52,7 +51,7 @@ jQuery(document).ready(function(){
 				var chat = chatRef;
 
 				if ("" != message) {
-					chatMessages.push({name:username, text:message, chatSession: chat});
+					chatMessages.push({name:username, text:message, chatSession: chat, sendFrom: "user"});
 				}
 				
 				chatMessage.val('');
@@ -66,9 +65,18 @@ jQuery(document).ready(function(){
 			if(chatRef == data.chatSession){
 				var username = data.name;
 				var message = data.text;
+				var sendFrom = data.sendFrom;
 
-				var output = '<div class="message"><strong class="example-chat-username">'
-					+ username +': </strong>'+ message +'</div>';
+				var classExtra = "";
+
+				if("admin" == sendFrom){
+					classExtra = "adminMessage";
+				}else{
+					classExtra = "userMessage";
+				}
+
+				var output = '<div class="message '+ classExtra +'"><strong class="example-chat-username">'
+					+ username +': </strong><div class="messageText">'+ message +'</div></div>';
 
 				jQuery(".chatMessages").append(output);
 

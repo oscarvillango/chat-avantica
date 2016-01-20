@@ -86,7 +86,7 @@ angular.module("chatAvanticaAdmin")
 
 							dataUserChat.$loaded()
 								.then(function(userData){
-									var infoChat = {chat: chatID, username: userData.name, useremail:userData.email, messages: []}
+									var infoChat = {chat: chatID, username: userData.name, useremail:userData.email, messages: [], newMessage: true}
 									
 									var chatPreviuosMessages = f(chatsMessages);
 
@@ -94,7 +94,7 @@ angular.module("chatAvanticaAdmin")
 										.then(function(data){
 											for(var i = 0; i < data.length; i++){
 												if(chatID == data[i].chatSession){
-													infoChat.messages.push({name: data[i].name, text: data[i].text});
+													infoChat.messages.push({name: data[i].name, text: data[i].text, sendFrom: data[i].sendFrom});
 												}
 											}
 
@@ -124,7 +124,7 @@ angular.module("chatAvanticaAdmin")
 					.then(function(data){
 						for (var i = 0; i < r.currentChats.length; i++) {
 							if(data.chatSession == r.currentChats[i].chat){
-								r.currentChats[i].messages.push({name: data.name, text: data.text});
+								r.currentChats[i].messages.push({name: data.name, text: data.text, sendFrom: data.sendFrom});
 							}
 						};
 					})
