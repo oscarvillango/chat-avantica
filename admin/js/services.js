@@ -125,6 +125,11 @@ angular.module("chatAvanticaAdmin")
 						for (var i = 0; i < r.currentChats.length; i++) {
 							if(data.chatSession == r.currentChats[i].chat){
 								r.currentChats[i].messages.push({name: data.name, text: data.text, sendFrom: data.sendFrom});
+
+								if("user" == data.sendFrom && r.currentChat != data.chatSession){
+									r.currentChats[i].newMessage = true;
+								}
+								
 							}
 						};
 					})

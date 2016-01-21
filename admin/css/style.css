@@ -58,7 +58,7 @@ body{
 
 .chatPanel{
 	background-color: #FFFFFF;
-	min-height: 500px;
+	min-height: 400px;
 	padding: 0 15px 10px;
 }
 
@@ -75,9 +75,12 @@ body{
 .chatLists{
 	background-color: #F1E76E;
 	border-radius: 10px;
+	color: #454685;
 	cursor: pointer;
+	font-size: 1rem;
 	margin-bottom: 10px;
 	padding: 10px;
+	position: relative;
 }
 
 .chatLists:hover{
@@ -86,15 +89,18 @@ body{
 
 .chatLists.active{
 	background-color: #EF6925;
-}
-
-.chatLists label{
-	color: #454685;
-	font-size: 1rem;
-}
-
-.chatLists.active label{
 	color: #ffffff;
+}
+
+.chatLists .newMessage{
+	-webkit-animation-name: newMessage; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
+    animation-name: newMessage;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    right: -15px;
 }
 
 .chatMessages{
@@ -122,4 +128,20 @@ body{
 
 .userMessage .messageText{
   background-color: rgba(137,202,142, 0.7);
+}
+
+/* Animations CSS3 */
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes newMessage {
+    0%   {color: #EF4023;}
+    50%  {color: #00ACCF;}
+    100% {color: #EF4023;}
+}
+
+/* Standard syntax */
+@keyframes newMessage {
+    0%   {color: #EF4023;}
+    50%  {color: #00ACCF;}
+    100% {color: #EF4023;}
 }

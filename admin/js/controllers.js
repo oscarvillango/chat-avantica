@@ -15,7 +15,7 @@ angular.module("chatAvanticaAdmin")
 		}
 
 	}])
-	.controller("chatDashboard", ["$scope", "userServices", "fireServices", "$location", function(s, u, f, l){
+	.controller("chatDashboard", ["$rootScope", "$scope", "userServices", "fireServices", "$location", function(r, s, u, f, l){
 		s.newMessage = {};
 
 		f.getCurrentChats();
@@ -23,7 +23,8 @@ angular.module("chatAvanticaAdmin")
 		s.username = u.getUserInfo();
 
 		s.seeChat = function(currentChat){
-			s.currentChat = currentChat.chat;
+			r.currentChat = currentChat.chat;
+			currentChat.newMessage = false;
 			s.newMessage = {chatID : currentChat.chat, message: ""};
 		}
 
