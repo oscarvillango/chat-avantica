@@ -34,6 +34,7 @@ jQuery(document).ready(function(){
 			jQuery(".avChatBody").removeClass("login");
 			jQuery(".chatLive").fadeIn("slow");
 			setClock();
+			scrollChat();
 		});
 
 		var userID = getChatUser(chatRef);
@@ -78,7 +79,10 @@ jQuery(document).ready(function(){
 				var output = '<div class="message '+ classExtra +'"><strong class="example-chat-username">'
 					+ username +': </strong><div class="messageText">'+ message +'</div></div>';
 
-				jQuery(".chatMessages").append(output);
+				jQuery(".chatMessages .chatList").append(output);
+				jQuery(".chatMessages").each(function(){
+					jQuery(this).animate({scrollTop: jQuery(this).children(".chatList").outerHeight()});
+				});	
 
 			}
 
@@ -133,6 +137,14 @@ jQuery(document).ready(function(){
 	function checkTime(i) {
 		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
 		return i;
+	}
+
+	function scrollChat(){
+		/*setInterval(function(){
+			jQuery(".chatMessages").each(function(){
+				jQuery(this).animate({scrollTop: jQuery(this).children(".chatList").outerHeight()});
+			});				
+		}, 200);*/
 	}
 
 });

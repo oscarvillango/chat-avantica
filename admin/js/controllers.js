@@ -22,10 +22,13 @@ angular.module("chatAvanticaAdmin")
 
 		s.username = u.getUserInfo();
 
+		f.autoScrollChats();
+
 		s.seeChat = function(currentChat){
 			r.currentChat = currentChat.chat;
 			currentChat.newMessage = false;
 			s.newMessage = {chatID : currentChat.chat, message: ""};
+			f.autoScrollChats();
 		}
 
 		s.addMessage = function(){

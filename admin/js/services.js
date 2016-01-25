@@ -113,11 +113,11 @@ angular.module("chatAvanticaAdmin")
 
 			});
 
-			this.checkIncomingMessages(this.attchNewMessage);
+			this.checkIncomingMessages(this.attchNewMessage, this.autoScrollChats);
 
 		}
 
-		this.checkIncomingMessages = function(callback){
+		this.checkIncomingMessages = function(callback, scrollChat){
 			var dataMessageChats = f.getMessagesArray();
 
 			dataMessageChats.$watch(function(event){
@@ -127,7 +127,7 @@ angular.module("chatAvanticaAdmin")
 
 				messageData.$loaded()
 					.then(function(data){
-						callback(data);
+						callback(data, scrollChat);
 					})
 					.catch(function(error) {
 						console.error("Error:", error);
@@ -136,10 +136,11 @@ angular.module("chatAvanticaAdmin")
 			});
 		}
 
-		this.attchNewMessage = function(data){
+		this.attchNewMessage = function(data, scrollChat){
 			for (var i = 0; i < r.currentChats.length; i++) {
 				if(data.chatSession == r.currentChats[i].chat){
 					r.currentChats[i].messages.push({name: data.name, text: data.text, sendFrom: data.sendFrom});
+					scrollChat();
 
 					if("user" == data.sendFrom && r.currentChat != data.chatSession){
 						r.currentChats[i].newMessage = true;
@@ -157,6 +158,15 @@ angular.module("chatAvanticaAdmin")
 					console.log("Done");
 				});
 
+		}
+
+		this.autoScrollChats = function(){
+			setTimeout(function(){
+				jQuery(".chatMessages").each(function(){
+					var scroll = parseInt(jQuery(this).children("ul").height()) + 10000;
+					jQuery(this).scrollTop(scroll);
+				});	
+			}, 200);
 		}
 
 	}]);
