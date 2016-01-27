@@ -1,8 +1,8 @@
 'use strict';
 angular.module("chatAvanticaAdmin")
-	.service("userServices", ["$http", "$firebaseAuth", "$cookies", "$base64", "$rootScope", function(h, f, c, b, r){
+	.service("userServices", ["$http", "$firebaseAuth", "$cookies", "$base64", "$rootScope", function (h, f, c, b, r) {
 
-		this.login = function(userEmail, userPass, callback){
+		this.login = function(userEmail, userPass, callback) {
 			var refFirebase = new Firebase("https://avantica-chat-test.firebaseio.com");
 			var data = f(refFirebase);
 
@@ -13,7 +13,7 @@ angular.module("chatAvanticaAdmin")
   				"password": userPass
 			}).then(function(authData) {
 
-				var cookieEncode = b.encode(userEmail +"-"+ userPass +"-"+ authData.uid);
+				var cookieEncode = b.encode(userEmail + "-" + userPass + "-" + authData.uid);
 				r.session = cookieEncode;
 
 				h.defaults.headers.common['Authorization'] = 'Basic ' + cookieEncode;
@@ -63,8 +63,8 @@ angular.module("chatAvanticaAdmin")
 			var chatPreviuosMessages = f.getMessagesArray();
 
 			chatPreviuosMessages.$loaded()
-				.then(function(data){
-					for(var i = 0; i < data.length; i++){
+				.then(function(data) {
+					for (var i = 0; i < data.length; i++){
 						if(chatID == data[i].chatSession){
 							infoChat.messages.push({name: data[i].name, text: data[i].text, sendFrom: data[i].sendFrom});
 						}
