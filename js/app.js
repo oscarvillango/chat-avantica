@@ -1,7 +1,7 @@
-jQuery(document).ready(function(){
-	var chatUsers = new Firebase('https://avantica-chat-test.firebaseio.com/users');
-	var chatChats = new Firebase('https://avantica-chat-test.firebaseio.com/chats');
-	var chatMessages = new Firebase('https://avantica-chat-test.firebaseio.com/mensages');
+jQuery(document).ready(function () {
+	var chatUsers = new Firebase('https://avantica-chat-test.firebaseio.com/users'),
+        chatChats = new Firebase('https://avantica-chat-test.firebaseio.com/chats'),
+        chatMessages = new Firebase('https://avantica-chat-test.firebaseio.com/mensages');
 
 	var btnSession = jQuery("#btnSession");
 	var startChat = jQuery("#startChat");
